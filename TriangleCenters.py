@@ -1,7 +1,5 @@
 import math
 
-A_x = A_y = B_x = B_y = C_x = C_y = range(-12, 12)
-
 
 def centroid(x1, y1, x2, y2, x3, y3):
     Ce_x = (x1 + x2 + x3) / 3
@@ -60,8 +58,9 @@ def findTriangle(xy_low, xy_high, Ce_x, Ce_y, I_x, I_y, Ci_x, Ci_y, O_x, O_y):
                     for e in C_x:
                         for f in C_y:
                             if ((centroid(a, b, c, d, e, f) == (Ce_x, Ce_y)) and (incenter(a, b, c, d, e, f) == (I_x, I_y)) and (circumcenter(a, b, c, d, e, f) == (Ci_x, Ci_y)) and orthocenter(a, b, c, d, e, f) == (O_x, O_y)):
-                                print("A(", a, ",", b, "),", "B(", c,
-                                      ",", d, "),", "C(", e, ",", f, ")")
+                                if(a <= c and c <= e and b <= d):
+                                    print("A(", a, ",", b, "),", "B(", c,
+                                          ",", d, "),", "C(", e, ",", f, ")")
 
 
 findTriangle(-11, 11, 14 / 3, 2, 5, 0, 5.5, 4, 3, -2)
