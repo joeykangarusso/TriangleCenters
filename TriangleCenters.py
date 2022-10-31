@@ -1,6 +1,4 @@
 import math
-import time
-start_time = time.time()
 
 A_x = A_y = B_x = B_y = C_x = C_y = range(-12, 12)
 
@@ -53,12 +51,17 @@ def orthocenter(x1, y1, x2, y2, x3, y3):
         return()
 
 
-for a in A_x:
-    for b in A_y:
-        for c in B_x:
-            for d in B_y:
-                for e in C_x:
-                    for f in C_y:
-                        if ((centroid(a, b, c, d, e, f) == (14 / 3, 2)) and (incenter(a, b, c, d, e, f) == (5, 0)) and (circumcenter(a, b, c, d, e, f) == (5.5, 4)) and orthocenter(a, b, c, d, e, f) == (3, -2)):
-                            print("A(", a, ",", b, "),", "B(", c,
-                                  ",", d, "),", "C(", e, ",", f, ")")
+def findTriangle(xy_low, xy_high, Ce_x, Ce_y, I_x, I_y, Ci_x, Ci_y, O_x, O_y):
+    A_x = A_y = B_x = B_y = C_x = C_y = range(xy_low, xy_high)
+    for a in A_x:
+        for b in A_y:
+            for c in B_x:
+                for d in B_y:
+                    for e in C_x:
+                        for f in C_y:
+                            if ((centroid(a, b, c, d, e, f) == (Ce_x, Ce_y)) and (incenter(a, b, c, d, e, f) == (I_x, I_y)) and (circumcenter(a, b, c, d, e, f) == (Ci_x, Ci_y)) and orthocenter(a, b, c, d, e, f) == (O_x, O_y)):
+                                print("A(", a, ",", b, "),", "B(", c,
+                                      ",", d, "),", "C(", e, ",", f, ")")
+
+
+findTriangle(-11, 11, 14 / 3, 2, 5, 0, 5.5, 4, 3, -2)
